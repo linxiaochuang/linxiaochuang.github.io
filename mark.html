@@ -1,0 +1,519 @@
+<div class="bgc_4 mycss">
+	<!--  <div class="h_20"></div> -->
+<div class="widget-body">
+                                            <div class="widget-main ">
+                                                <div class="tabbable">
+                                                    <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                                                        <li class="active">
+                                                            <a data-toggle="tab" goto="#home11">
+                                                                成绩录入
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a data-toggle="tab" goto="#profile11">
+                                                                授权他人录入
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content tabs-flat">
+                                                        <div id="home11" class="tab-pane in active">
+                                                           <!-- 第一个tab -->
+	 <div ng-controller="mark_ctrl">
+		<div class=" bgc_f lh_50 form_one titone">
+
+
+
+<div class="row">
+	<div class="col-xs-12"> 
+		<div style="float: left;">
+			<div ng-include="'static/commonsearch_nocourse.html'"></div>
+		</div>
+		
+	</div>
+ 
+</div>
+
+
+
+
+
+		<!-- <span class="ml_15">年 级：</span>
+		<div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+		                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+		                        <span class="jccode" val="{{titleda.gradeCode}}" ng-bind="titleda.gradeName"></span>
+		                        &nbsp;
+		                        <i class="caret"></i>
+		                      </button>
+		                      <ul class="dropdown-menu" role="menu">
+		                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" gradeexam>
+		                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+		                        </li>   
+		                      </ul>
+		                    </div>
+		
+		                    <span class="ml_15">考试：</span>
+		<div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+		                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+		                        <span class="jccode" val="" ></span>
+		                        &nbsp;
+		                        <i class="caret"></i>
+		                      </button>
+		                      <ul class="dropdown-menu" role="menu">
+		                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList">
+		                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+		                        </li>
+		                        
+		
+		                      </ul>
+		                    </div>  
+		
+		                     <span class="ml_15">&nbsp;</span>
+		                    <div class="btn-group ">
+		                       <span class="ivbtn hand bgc_blue fc_0" exammarksearch>查 询</span>
+		                       <a href="#/teach/exam_process"><span class="ivbtn hand bgc_blue fc_0">返回考试流程图</span></a>
+		                        
+		                    </div>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+              
+	</div>
+
+
+	<div class="form_two tittwo bgc_f lh_50 dpn">
+					<span class="ml_15">年 级：</span>
+					<div  class="btn-group h_30 ys lh_26">
+                    <span ng-bind="temone.gradeName"></span>   
+                    </div>
+
+                    <span class="ml_15">考试：</span>
+					<div  class="btn-group h_30 ys lh_26">
+                    <span ng-bind="temone.examName"></span>   
+                    </div>  
+
+
+                    <span class="ml_15">科目：</span>
+					<div  class="btn-group h_30 ys lh_26">
+                    <span ng-bind="temone.courseName"></span>   
+                    </div>  
+
+                   <!--  <span>文件路径：</span>
+                   <div class="btn-group w_308">
+                     <input type="text" id="file_show" class="form-control"> 
+                   </div>
+                   <div class="btn-group w_150">
+                      <span class="ivbtn hand bgc_blue fc_0">选择文件</span>
+                      <span class="mycss">
+                      <form id="picture_form" style="display: inline-block;position: absolute;" action="../../examResult/showExamResult" method="post" enctype="multipart/form-data" ><input examfile name="file"  id="file_upload" class="fileinput" type="file">
+                   					<input type="hidden" name="gradeCode" id="gradeCode">
+                   					<input type="hidden" name="examCode" id="examCode">
+                   					<input type="hidden" name="courseIndex" id="courseIndex">
+                      </form>
+                      
+                   
+                      </span>
+                   </div> -->
+
+                   		<span>文件路径：</span>
+                    <div class="btn-group w_200">
+                      <input type="text" id="file_show" class="form-control"> 
+                    </div>
+                    <div class="btn-group w_100">
+                       <span class="ivbtn hand bgc_blue fc_0">选择文件</span> 
+                    </div>
+
+    <div class="btn-group ps_r">
+        <form id="picture_form" style="display: inline-block;position: absolute;" action="../../examResult/showExamResult" method="post" enctype="multipart/form-data" >
+        	<input accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="FILE" fileset id="file_upload" class="fileinput" type="file" style="width: 100px;">
+			<input type="hidden" name="examId" id="examId" value="2">
+			<input type="hidden" name="examCode" id="examCode" value="2">
+			<input type="hidden" name="courseType" id="courseType" value="2">
+			<input type="hidden" name="courseIndex" id="courseIndex" value="2">
+			<input type="hidden" name="courseName" id="courseName" value="{{temone.courseName}}">
+        </form> 
+    </div> 
+
+        <span class="ml_15"></span> 
+                    <div class="btn-group w_100">
+                       <span class="ivbtn hand bgc_blue fc_0" scorefile>预 览</span> 
+                    </div>
+	</div>
+ 
+
+	<div class="h_20"></div>
+
+	<!-- 成绩录入 第一面列表内容 -->
+	<div class="litone">
+		<div class="bgc_7 lh_40">
+		 <span class="fc_0 ml_15" id="tabletitle"><img src="images/li_03.png">
+
+      <span ng-bind="commongradedata[gri.index].gradeName"></span>&nbsp;
+      <span ng-bind="commongradedata[gri.index].exams[exi.index].examName"></span></span> 
+
+     
+		
+		</div>
+		<div class="b_2 pd_15  bgc_f">
+		<div class="h_15"></div>
+		<div class="row mycss" style="max-height: 400px;overflow: auto;">
+
+			<div class="fc_yuwen fl mg_40" ng-repeat="(key, value) in maindata" ng-cloak >
+				<div class="row w_300 mg_auto bgc_yuwen ">
+					<div class="col-xs-6 bl_yuwen h_160">
+						<div class="lh_60 f_20 fw_b pl_15"><span ng-bind="value.courseName"></span>-<span ng-bind="value.courseType"></span></div>
+						<div class="pl_15 lh_30">总数：<span ng-bind="value.headcount"></span></div>
+						<div class="pl_15 lh_30">已录：<span ng-bind="value.hasRecord"></span></div>
+						<div class="pl_15 lh_30">未录：<span ng-bind="value.notHasRecord"></span></div>
+					</div>
+					<div class="col-xs-6">
+						<div>
+						<div class="fr w_70 lh_28 bgc_yuwenv fc_0 t_c hand" courseType="{{value.courseTypeName}}" val="{{value.courseName}}" entermark="{{value.courseIndex}}">录入成绩</div>
+						</div>
+						<div  class="cl pt_10">
+							<div class="mg_auto" id="myStat{{key+1}}" data-dimension="110" data-text="{{value.hasRecord*100/value.headcount|number:0}}%" data-info="New Clients" data-width="4" data-fontsize="30" data-percent="{{value.hasRecord*100/value.headcount|number:0}}" data-fgcolor="#C09853" data-bgcolor="#ccc"></div>
+						</div>
+					</div> 
+				</div>
+			</div>
+
+		 
+
+			 
+  
+		</div>
+
+
+		<div class="h_20"></div>
+		<div >
+                          <a href="#/teach/exam_process" class="savebtn bgc_6 mr_15">返回考试流程图</a>
+                        </div>
+
+ 
+		     
+		</div>
+		
+	</div>
+<!-- 成绩录入 第一面列表内容 -->
+
+<!-- 成绩录入 第二面列表内容 -->
+		<div class="littwo dpn">
+		<div class="bgc_7 lh_40">
+		<span class="fc_0 ml_15" id="tabletitle"><img src="images/li_03.png">
+
+      <span ng-bind="commongradedata[gri.index].gradeName"></span>&nbsp;
+      <span ng-bind="commongradedata[gri.index].exams[exi.index].examName"></span>&nbsp;
+      成绩录入</span> 
+	<a class="fr mr_15 ml_10 hand ps_r opt" setcolumns>
+                    <img  width="25" src="images/lie.png">
+                    <span class="fc_0">定义列</span>
+                  </a> 
+	  <label class="checkbox-inline fr mr_15 ml_10 opt" setfind>
+                  <img  width="25" src="images/find.png">
+                  <span class="fc_0">筛选</span>
+                </label>
+
+                <div class="sfind dpn" stopp>
+
+                  <div class="form-group has-info has-feedback" ng-if="value.find==1&&value.selected==1" ng-repeat="(key, value) in cols">
+                    <input type="text" class="form-control input-xs" placeholder="{{value.title}}" ng-model='value.findtext'></div>
+                  <a class="shide2 hand" sfindsearch>筛选</a>
+                  <a class="shide hand" setfind>收起</a>
+                </div>
+
+                <div class="stitle dpn" stopp>
+                  <label class="slabel" ng-repeat="value in cols" >
+                    <input type="checkbox" class="colored-blue" ng-checked="value.selected==1" titleunselected/>
+                    {{value.title}}
+                  </label>
+                  <a class="shide2 hand" titleselall>全选</a>
+                  <a class="shide2 hand ml_15" titleunselall>反选</a>
+                  <a class="shide hand" setcolumns>收起</a>
+                </div> 
+     
+		<!--  <a class="fr mr_15"><img width="25" src="images/print.png"></a>
+		<a class="fr mr_15"><img  width="25" src="images/xls.png"></a>  -->
+    <div class="fr btn-group m_lr15 h_30 ys t_c">
+         	<a class="fc_0" id="zclipcon" >复制表格</a> 
+         </div>
+     <div class="fr btn-group w_50 h_30 ys mr_40">
+         <input class="inputv t_c" type="text" ng-model="temscore" placeholder="设置最大分数值">
+         </div> 
+         <div class="fr btn-group w_250 h_30 ys t_r">
+         	<span class="fc_0">设置最大分数值:</span> 
+         </div>
+		
+
+		</div>
+			<div id='printtable' class="b_2 pd_15  bgc_f">
+		 	<table class="table table-bordered ng-table">
+      
+		      <tbody>
+		      <tr class="fw_b bgc_4">
+		          <td height="40" >序号</td>
+		          <!-- <td >年级</td> -->
+		           <th ng-if="cols[0].selected==1"  class="sortable">
+		           <span mysort='className' class="ng-binding sort-indicator" >班级</span> </th>
+		           <th class="sortable" ng-if="cols[1].selected==1"><span mysort='seatNum' class="ng-binding sort-indicator">班级座号</span></th>
+		           <th  class="sortable" ng-if="cols[2].selected==1">
+		           <span mysort='stuExamNumber' class="ng-binding sort-indicator" >考号</span> </th>
+		           <th class="sortable" ng-if="cols[3].selected==1"><span mysort='examAddress' class="ng-binding sort-indicator">考场</span></th>
+		           <th class="sortable" ng-if="cols[4].selected==1"><span mysort='examSeatNum' class="ng-binding sort-indicator">考场座号</span></th> 
+		           <th  class="sortable" ng-if="cols[5].selected==1">
+		           <span mysort='studentName' class="ng-binding sort-indicator">姓名</span> </th>
+		           <th class="sortable" ng-if="cols[6].selected==1"><span mysort='score' class="ng-binding sort-indicator">全卷（单科总分）</span> 
+		            <!-- <div contenteditable="true" id="exceledit" style="width: 1px;height: 1px;overflow: hidden; float: left"> </div> --></th> 
+		        </tr>
+		        <tr ng-repeat="(key, value) in outportdata|orderBy : myorder" >
+		         <td height="30" >{{key+1}}</td>
+		          <!-- <td >{{value.gradeName}}</td> -->
+		           <td ng-bind="value.className" ng-if="cols[0].selected==1"></td>
+		           <td ng-bind="value.seatNum" ng-if="cols[1].selected==1"></td>
+		           <td ng-bind="value.stuExamNumber"ng-if="cols[2].selected==1"></td>
+		           <td ng-bind="value.examAddress" ng-if="cols[3].selected==1"></td>
+		           <td ng-bind="value.examSeatNum" ng-if="cols[4].selected==1"></td> 
+		           <td ng-bind="value.studentName" ng-if="cols[5].selected==1"></td>
+		          <td class="ps_r {{value.myclass}}" ng-if="cols[6].selected==1">
+    			  <div class="floattip">分数必须小于<span ng-bind="temscore"></span></div> 
+		            <input class="ipone_d enter" scoreenter ng-keyup="cheknum(value.score,value)" max="{{temscore}}" name="score" ng-model="value.score">
+		           </td> 
+		           
+		            </tr>
+
+		           
+		        
+		      </tbody>
+		    </table>
+<div class="h_80"></div>
+		     <div class="myfix">
+		     	<hr>
+			       <a class="savebtn bgc_blue" delallmark>清空全部成绩</a>
+			       <a class="savebtn bgc_blue" savemark>保存</a>
+			       <a class="savebtn bgc_blue" litoneshow>返回</a>
+		  </div>
+		</div>
+		
+	</div>
+	<!-- 成绩录入 第二面列表内容 -->
+	
+</div>
+<!-- 第一个tab -->
+
+
+                                                        </div>
+
+                                                        <div id="profile11" class="tab-pane">
+                                                            <!-- 第二个tab -->
+	 <div ng-controller="mark_auth_ctrl">
+	
+
+
+
+
+	<div class="bgc_f lh_50 ">
+
+    <span class="ml_15">年级：</span>
+    <div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-if="value.now=='active'" ng-repeat="(key, value) in authgradedata" val="{{value.gradeCode}}" ng-bind="value.gradeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu max_300" role="menu">
+
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in authgradedata" authgradechange>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li> 
+                      </ul>
+                    </div> 
+
+
+        <span class="ml_15">考试：</span>
+    <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-repeat="(key, value) in authgradedata[gri.index].examList" ng-if="value.now=='active'" val="{{value.examId}}" ng-bind="value.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in authgradedata[gri.index].examList" authexamchange>
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li> 
+                      </ul>
+                    </div>  
+
+
+
+
+
+
+
+
+
+
+<!-- <span class="ml_15">年级：</span> 
+		<div class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="" >选择年级</span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" gradeexamsing>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li>   
+                      </ul>
+
+
+                    </div>
+
+
+                    <span class="ml_15">考试：</span> 
+					<div idv="examCode" class="btn-group w_150 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="" ></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList" selectexam>
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li>
+                      </ul>
+                    </div>  -->
+                    
+ 
+
+       
+
+		
+	</div> 
+ 
+
+	<div class="h_20"></div>
+
+	<div>
+		<div class="bgc_7 lh_40">
+		 <span class="fc_0 ml_15" id="tabletitle"><img src="images/li_03.png">
+
+      <span ng-bind="commongradedata[gri.index].gradeName"></span>&nbsp;
+      <span ng-bind="commongradedata[gri.index].exams[exi.index].examName"></span> &nbsp;授权他人录入成绩地址一览表</span>
+
+<!--      
+		 <a class="fr mr_15"><img width="25" src="images/print.png"></a>
+		 <a class="fr mr_15"><img  width="25" src="images/xls.png"></a> 
+
+<div class="fr btn-group w_250 h_30 ys mr_40">
+    <input class="inputv" type="text" placeholder="请输入姓名">
+    </div> -->
+		</div>
+		<div class="b_2 pd_15  bgc_f">
+		 	<table class="table table-bordered">
+      
+		      <tbody>
+		      <tr class="fw_b bgc_4">
+		          <!-- <td  width="40" ><input type="checkbox"></td> -->
+		          <td height="40" width="80">序号</td>
+		          <td width="100">科目</td>
+		           <td >授权地址</td>
+		           <td width="150">操作</td> 
+		        </tr>
+		        <tr ng-repeat="(key, value) in maindata">
+		        <!--  <td  ><input type="checkbox"></td> -->
+		          <td height="30"><span >{{key+1}}</span></td>
+		          <td ><span ng-bind="value.courseName"></span></td>
+		           <td ><span id="zclipv_{{value.courseId}}" ng-bind="value.authurl"></span></td>
+		           <td >
+					  <div class="editdiv ">
+			          <!-- <a id="zclip_{{value.courseId}}" class="hand" cpurlexam>复制链接</a> |  -->
+			          <div class="fl ps_r pl_15" ><a id="zclip_{{value.courseId}}" class="hand" cpurlexam>复制链接</a></div>| 
+			          <a class="hand" authorexam>生成授权</a> 
+			          </div>
+		           </td>
+		           
+		            </tr>
+
+		           
+		        
+		      </tbody>
+		    </table>
+			<div class="h_80"></div>
+            <div class="ksfanhui">
+		     <div class="myfix">
+		     <hr>
+		          <a href="#/teach/exam_process" class="savebtn bgc_6 mr_15">返回考试流程图</a>
+			      <a class="savebtn bgc_6" authorexambatch>批量生成</a>
+			      <!-- <a class="savebtn bgc_6 ml_15" >保存</a> -->
+		  </div>
+		</div>
+
+		</div>
+		
+	</div>
+</div>
+<!-- 第二个tab -->	 
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+<!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">
+		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfig>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+
+	</div>
+<!-- 弹出窗口 -->
+	</div>
