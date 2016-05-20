@@ -1,0 +1,97 @@
+<div ng-controller="issue_ctrl" class="bgc_4 mycss">
+<!-- 	 <div class="h_20"></div> -->
+	<!-- <div>
+		<span class="itbtn hand bgc_y fc_0"><span class="f_24">①</span>&nbsp;&nbsp;选择数据</span> <span  class="itbtn hand bgc_1 fc_1"><span  class="f_24">②</span>&nbsp;&nbsp;上传数据</span>
+	</div>
+	 <div class="h_20"></div> -->
+
+
+<!-- 第一个tab -->
+	 <div class="tab_1">
+	<div class="form_one bgc_f lh_50">
+		<span class="ml_15">年级：</span>
+		<div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-if="value.now=='active'" ng-repeat="(key, value) in gradeclasslist" val="{{value.gradeCode}}" ng-bind="value.gradeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradeclasslist" changegradecl>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li>
+                        
+
+                      </ul>
+                    </div>
+
+
+<span class="ml_15">&nbsp;</span>
+                    <div class="btn-group">
+                       
+                       <span class="ivbtn hand bgc_blue fc_0" issuesearch>查 询</span>
+                        
+                    </div>
+                    
+
+
+ 
+
+ 
+        
+
+              
+	</div> 
+ 
+
+	<div class="h_20"></div>
+
+	<div>
+		<div class="bgc_7 lh_40">
+		 <span class="fc_0 ml_15"><img src="images/li_03.png"> 考试成绩发布信息</span>
+		<!--   <a class="fr mr_15"><img  width="25" src="images/print.png"></a>
+		<a class="fr mr_15"><img width="25" src="images/xls.png"></a> -->
+		 
+		</div>
+		
+		<div class="b_2 pd_15  bgc_f">
+
+		 
+		 	<table class="table table-bordered" style="max-height: 400px;overflow: auto;">
+      
+		      <tbody>
+		      <tr class="fw_b bgc_4">
+		          <td height="40"  width="100">序号</td>
+		          <td >考试</td>
+		          <td >考试时间</td>
+		          <td >成绩状态</td>
+		          <td >操作</td>
+		           
+		          
+		        </tr>
+		        <tr ng-repeat="(key, value) in maindata" ng-cloak>
+		         <td height="30"  width="100"><span>{{key+1}}</span></td>
+		         <td ><span ng-bind="value.examName"></span></td>
+		          <td ><span ng-bind="numtotime(value.examStartDate)"></span></td>
+		          <td >
+		          <span ng-if="value.examStatus==4" class="fc_11">已发布</span>
+		          <span ng-if="value.examStatus!=4"  class="fc_10">未发布</span>
+		          </td>
+		          <td >
+					<span val="{{key}}" ng-if="value.examStatus!=4" class="fc_9 hand" sendissue="4">发布成绩</span>
+					<!--  <span ng-if="value.examStatus==4"  class="fc_4">发布成绩</span>  -->
+					<span val="{{key}}" ng-show="value.examStatus==4" class="fc_9 hand" sendissue="0">取消发布</span>
+		          </td>
+		            </tr>
+ 
+		        
+		      </tbody>
+		    </table>
+		    <div class="h_20"></div>
+		    <a href="#/teach/exam_process"><span class="ivbtn hand bgc_blue fc_0">返回考试流程图</span></a>
+		</div>
+		
+	</div>
+</div>
+<!-- 第一个tab -->
+	</div>

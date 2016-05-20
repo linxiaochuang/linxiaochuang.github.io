@@ -1,0 +1,309 @@
+<div ng-controller="single_ctrl" class="bgc_4 mycss">
+	 <!-- <div class="h_20"></div> -->
+	<!-- <div>
+		<span class="itbtn hand bgc_y fc_0"><span class="f_24">①</span>&nbsp;&nbsp;选择数据</span> <span  class="itbtn hand bgc_1 fc_1"><span  class="f_24">②</span>&nbsp;&nbsp;上传数据</span>
+	</div>
+	 <div class="h_20"></div> -->
+
+
+<!-- 第一个tab -->
+	 <div class="tab_1">
+	<div class="form_one bgc_f lh_50">
+		
+
+	<!-- 	<span class="ml_15">年 级：</span>
+	<div class="btn-group w_100 h_30 ys b_1">
+	                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+	                        <span class="jccode" val="{{titleda.gradeCode}}" ng-bind="titleda.gradeName"></span>
+	                        &nbsp;
+	                        <i class="caret"></i>
+	                      </button>
+	                      <ul class="dropdown-menu" role="menu">
+	                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" setexamthree>
+	                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+	                        </li>
+	                        
+	
+	                      </ul>
+	                    </div>
+	
+	                    <span class="ml_15">考试：</span>
+	<div id="examCode" idv="examCode" class="btn-group w_200 h_30 ys b_1">
+	                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+	                        <span class="jccode" val="" ></span>
+	                        &nbsp;
+	                        <i class="caret"></i>
+	                      </button>
+	                      <ul class="dropdown-menu" role="menu">
+	                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList">
+	                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+	                        </li>
+	                        
+	
+	                      </ul>
+	                    </div>   -->
+<span class="ml_15">年级：</span>
+    <div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-if="value.now=='active'" ng-repeat="(key, value) in singradedata" val="{{value.gradeCode}}" ng-bind="value.gradeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu max_300" role="menu">
+
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in singradedata" stusinsetgradechange>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li> 
+                      </ul>
+                    </div> 
+
+
+        <span class="ml_15">考试：</span>
+    <div idv="examCode" id="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-repeat="(key, value) in singradedata[gri.index].examList" ng-if="value.now=='active'" val="{{value.examId}}" ng-bind="value.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in singradedata[gri.index].examList" stusetexamchange>
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li> 
+                      </ul>
+                    </div>  
+<!-- <span class="ml_15">年级：</span>
+    <div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-if="value.now=='active'" ng-repeat="(key, value) in singradedata" val="{{value.gradeCode}}" ng-bind="value.gradeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu max_300" role="menu">
+
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in singradedata" singradechange>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li> 
+                      </ul>
+                    </div> 
+
+
+        <span class="ml_15">考试：</span>
+    <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-repeat="(key, value) in singradedata[gri.index].examList" ng-if="value.now=='active'" val="{{value.examId}}" ng-bind="value.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in singradedata[gri.index].examList" sinexamchange>
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li> 
+                      </ul>
+                    </div>   -->
+
+
+
+                    <span class="ml_15"></span>
+			 		<div class="btn-group ">
+
+			                    <span class="ivbtn hand bgc_blue fc_0" stusinglesearch="">查 询</span>
+			                   
+			        </div>
+
+ 
+
+        
+
+              
+	</div> 
+ 
+
+	<div class="h_20"></div>
+
+	<div>
+		<div class="bgc_7 lh_40">
+		 <span class="fc_0 ml_15" id="tabletitle"><img src="images/li_03.png">
+
+      <span ng-bind="singradedata[gri.index].gradeName"></span>&nbsp;
+      <span ng-bind="singradedata[gri.index].examList[exi.index].examName"></span> &nbsp; 未参加考试学生名单 <span ng-if='isattendcount()'>(<span ng-bind="isattendcount()"></span>人已参考,<span ng-bind="notattendcount()"></span>未参考)</span></span>
+
+		   <!--  标题头 -->
+ 
+
+     <a class="fr mr_15 hand ml_10 opt" bsprintwin><img width="25" src="images/print.png">  <span class="fc_0">打印</span></a>
+     <!-- <a class="fr mr_15 hand ml_10 opt" export><img  width="25" src="images/xls.png"> <span class="fc_0">复制表格</span></a> -->
+     <a id="zclipcon" class="fr mr_15 hand ml_10 opt" ><img  width="25" src="images/xls.png"> <span class="fc_0">复制表格</span></a>
+          
+  
+    <!--  标题头 -->
+ 
+		</div>
+		
+		<div class="b_2 pd_15  bgc_f" id="printtable">
+
+		 
+		 	<table class="table table-bordered" style="max-height: 450px;overflow: auto">
+      
+		      <tbody>
+		      <tr class="fw_b bgc_4">
+		          <td height="40"  width="100">序号</td>
+		          <td width="100">年级</td>
+		          <td >班级</td>
+		           <td >座号</td>
+		           <td >姓名</td>
+		           <td >考试状态</td>
+		           <td >考室</td>
+		           <td >考室座位号</td>
+		           <td >考号</td>
+		           <td >操作</td> 
+		          
+		        </tr>
+		        <tr ng-repeat="(key, value) in maindata" ng-cloak>
+		         <td height="30"  width="100"><span>{{key+1}}</span></td>
+		          <td ><span ng-bind="value.gradeName"></span></td>
+		          <td ><span ng-bind="value.className"></span></td>
+		           <td ><span ng-bind="value.seatNum"></span></td>
+		           <td ><span ng-bind="value.studentName"></span></td>
+		           <td >
+		           <span ng-if="value.isattend==0" class="fc_10">未参考</span>
+		           <span ng-if="value.isattend==1" class="fc_11">已参考</span>
+		           </td>
+		           <td ><span ng-bind="value.examAddress"></span></td>
+		           <td ><span ng-bind="value.examSeatNum"></span></td>
+		           <td ><span ng-bind="value.stuExamNumber"></span></td>
+		           <td ><a class="hand" stusinhit ng-if="value.isattend==0">参加考试</a></td> 
+		           </tr>
+
+		            
+		        
+		      </tbody>
+		    </table>
+		    <div class="h_20"></div>
+		    <div>
+		    	 <a href="#/teach/exam_process"><span class="ivbtn hand bgc_blue fc_0">返回考试流程图</span></a>
+		    </div>
+		</div>
+		
+	</div>
+</div>
+<!-- 第一个tab -->
+
+
+<!-- 弹出窗口 -->
+	<div id="stusin" class="w_508 dpn mg_auto mycss">
+		<div class="row lh_30">
+			<div class="col-xs-3 t_r"><span class="fc_1">年级：</span></div>
+			<div class="col-xs-3" ng-bind="temdata.gradeName"></div>
+			<div class="col-xs-2 t_r"><span class="fc_1">班级：</span></div>
+			<div class="col-xs-4" ng-bind="temdata.className"></div>
+		</div>
+		<div class="row lh_30">
+			<div class="col-xs-3 t_r"><span class="fc_1">座号：</span></div>
+			<div class="col-xs-3" ng-bind="temdata.seatNum"></div>
+			<div class="col-xs-2 t_r"><span class="fc_1">姓名：</span></div>
+			<div class="col-xs-4" ng-bind="temdata.studentName"></div>
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">考室：</span></div>
+			<div class="col-xs-7">
+				<div class="btn-group w_308 h_30 ys b_1">
+                      <button  type="button" class="t_l btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="1" >高一5班</span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradata">
+                          <a val="{{value.gradeCode}}" ><span ng-bind="value.gradeName"></span>-<span ng-bind="value.gradeCode"></span></a>
+                        </li> 
+                      </ul>
+                    </div> 
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">考号类型：</span></div>
+			<div class="col-xs-7">
+				<div class="btn-group w_308 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="1" >省考号</span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.typecode}}" ng-repeat="(key, value) in examnumlist">
+                          <a val="{{value.typecode}}" ng-bind="value.typename"></a>
+                        </li>
+                         
+
+                      </ul>
+                    </div> 
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">考号：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="如：2255654" ng-model="temdata.examNumber" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" savestuexam>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+
+	</div>
+<!-- 弹出窗口 -->
+
+<!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">
+		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="dayinp"><p>注：打印和电子表格生成功能耗时较长，点击后请耐心等待。打印预览窗口可能出现在浏览器背后。</p></div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfig>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+
+	</div>
+<!-- 弹出窗口 -->
+	</div>

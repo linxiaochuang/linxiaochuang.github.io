@@ -1,0 +1,326 @@
+<div ng-controller="examstu_ctrl" class="bgc_4 myscroll">
+ 
+	 <div class="tab_1" style="padding: 15px;background: #fff;">
+	<div class="form_one">
+    <div class="row">
+      <div class="col-xs-10"> 
+        <div style="float: left;">
+          
+ <span class="ml_15">年级：</span>
+    <div idv="gradeCode" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-if="value.now=='active'" ng-repeat="(key, value) in commongradedata" val="{{value.gradeCode}}" ng-bind="value.gradeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu max_300" role="menu">
+
+                        <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in commongradedata" stusetgradechange>
+                          <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                        </li> 
+                      </ul>
+                    </div> 
+
+
+        <span class="ml_15">考试：</span>
+    <div idv="examCode" id="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-repeat="(key, value) in commongradedata[gri.index].exams" ng-if="value.now=='active'" val="{{value.examId}}" ng-bind="value.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in commongradedata[gri.index].exams" stusetexamchange>
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li> 
+                      </ul>
+                    </div>  
+
+
+
+        </div>
+        <div style="float: left;">
+          
+          <div class="btn-group w_150">
+            <div class="chkbox t_l" id="jiedu" style="margin-top: -5px;">
+              <a class="w_150 h_30 lh_26 m_5 chk" ng-class="{true: 'chkactive', false: 'chk'}[maindata.schoolType==0]" myselect tip="0">
+                <span>借读生连续排位</span>
+                &nbsp;
+                <img class="one" src="images/v1.png">
+                <img class="two" src="images/v2.png"></a> 
+            </div> 
+          </div>
+
+
+
+        </div> 
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+
+
+
+<!--     <span class="ml_15">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：</span>
+    <div class="btn-group w_100 h_30 ys b_1">
+                  <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                    <span class="jccode" val="{{titleda.gradeCode}}" ng-bind="titleda.gradeName"></span>
+                    &nbsp;
+                    <i class="caret"></i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" setexamtwo>
+                      <a val="{{value.gradeCode}}" ng-bind="value.gradeName"></a>
+                    </li>
+                    
+
+                  </ul>
+                </div>
+
+
+   <span class="ml_15">考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;试：</span>
+  
+    <div id="examCode" class="btn-group w_200 h_30 ys b_1">
+                  <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                    <span class="jccode" val="" ></span>
+                    &nbsp;
+                    <i class="caret"></i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li examstatus="{{value.examStatus}}" val="{{value.examId}}" ng-repeat="(key, value) in examList" setexamid>
+                      <a val="{{value.examId}}" examstatus="{{value.examStatus}}" ng-bind="value.examName"></a>
+                    </li>
+                    
+
+                  </ul>
+                </div> 
+
+               
+
+    <div class="btn-group w_150">
+       <div class="chkbox t_l" id="jiedu">
+        <a class="w_150 h_30 lh_26 m_5 chk" ng-class="{true: 'chkactive', false: 'chk'}[maindata.schoolType==0]" myselect tip="0">
+        <span>借读生连续排位</span>&nbsp;<img class="one" src="images/v1.png"><img class="two" src="images/v2.png">
+        </a>  
+
+        </div>  
+
+                </div> -->
+ 
+
+
+
+
+
+
+
+
+
+
+ </div>
+
+
+
+
+                    <div class="bgc_f ">
+                    	
+     <span class="ml_15">考号类型：</span> 
+				<div idv="type" class="btn-group w_100 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode"  val="schoolStudentExamNum" >校考号</span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.typecode}}" ng-repeat="(key, value) in examnumlist" setkaohao>
+                          <a val="{{value.typecode}}" ng-bind="value.typename"></a>
+                        </li>
+                         
+
+                      </ul>
+                    </div> 
+
+
+        <span class="ml_15">学生排位方式：</span>
+		<div id="setlist" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" ng-repeat="(key, value) in setlist" val="{{value.typecode}}" ng-if="value.select=='active'" ><span ng-bind="value.typename"></span></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.typecode}}" ng-repeat="(key, value) in setlist" changeset>
+                          <a val="{{value.typecode}}" ><span ng-bind="value.typename"></span></a>
+                        </li>
+                        
+
+                      </ul>
+                    </div> 
+
+
+
+
+
+                    <span id="paiweititle" ng-if="setlist[0].select=='active'" class="ml_15">排位总分：</span>
+		<div id="paiwei"  ng-if="setlist[0].select=='active'" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="" ></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in paiweidata">
+                          <a val="{{value.examId}}" ng-bind="value.examName"></a>
+                        </li>
+                        
+
+                      </ul>
+                    </div> 
+
+		   <div class="btn-group w_150">
+                       <span class="ivbtn hand bgc_5 fc_0" createdata>生成</span>
+                        
+                    </div>	
+
+                     </div>	 
+ 
+	</div> 
+
+
+ 
+ 
+
+	<div class="h_20"></div>
+
+
+
+  <!-- 主列表 -->
+	<!-- <div>
+    <div class="bgc_7 lh_40">
+     <span class="fc_0 ml_15"><img src="images/li_03.png"> 考生考场分配及排位</span>
+   
+       <a class="fr mr_15 ml_10 hand ps_r opt" settitle><img  width="25" src="images/lie.png"> <span class="fc_0">定义列</span></a>
+  
+       <a class="fr mr_15 hand ml_10 opt" print><img width="25" src="images/print.png">  <span class="fc_0">打印</span></a> 
+       <a id="zclipcon" class="fr mr_15 hand ml_10 opt"><img  width="25" src="images/xls.png"> <span class="fc_0">复制表格</span></a>
+            
+     <label class="checkbox-inline fr mr_15 ml_10 opt">
+       <input type="checkbox" class="dpn" ng-model="demo.isFiltersVisible" /> &nbsp; &nbsp;&nbsp; &nbsp;<img  width="25" src="images/find.png">
+       <span class="fc_0">查找与筛选</span> 
+          </label> 
+  
+  <div class="stitle dpn">
+          <label class="slabel" ng-repeat="col in demo.cols">
+              <input type="checkbox" ng-model-options="{ getterSetter: true }" ng-model="col.show"/> {{col.title}}
+          </label>
+          <a settitleall class="shide2 hand">全选</a> <a settitleinverse class="shide2 hand ml_15">反选</a> <a settitle class="shide hand">收起</a>
+      </div> 
+     
+   
+    </div>
+    <div id="printtable" class="b_2 pd_15  bgc_f">
+      <table scrolldiv="120" ng-table-dynamic="demo.tableParams with demo.cols" class="tabscore_1 table table-condensed table-bordered table-striped fixedcon" disable-filter="!demo.isFiltersEnabled" show-filter="demo.isFiltersVisible"> 
+             <tr ng-repeat="row in $data" cl="1">
+  
+                <td ng-repeat="col in $columns " ng-switch="col.field">
+                    <div ng-switch-when="studentJiedu" class="editdiv" ytmod="{{col.field}}" contenteditable="false" >
+                      <span ng-if="row[col.field]!=null" ng-bind="ISYES[row[col.field]]"></span>
+                      <span ng-if="row[col.field]==null">否</span>
+                    </div>
+  
+                  <div ng-switch-default class="editdiv" ytmod="{{col.field}}"><span ng-bind="row[col.field]"></span> </div></td>
+              </tr> 
+          </table> 
+      </div>
+  
+  
+  <div class="h_80"></div>
+         <div class="myfix">
+         <hr>
+              <a class="savebtn bgc_blue mr_15 fl" href="#/teach/exam_process">返回考试流程图</a>
+            <a  class="savebtn bgc_6 fl" savesetstu>保 存</a>
+            <span class="ml_15" ng-if="maindata.length>0">共有<span ng-bind='maindata.length'></span>考生 <span ng-if="roomtotalcount()>0">,<span  ng-bind='roomtotalcount()'></span>考场</span> </span>
+      </div>
+   
+  </div> -->
+  <!-- 主列表 -->
+
+
+
+  <!-- 主列表2 --> 
+  <div>
+    <div class="bgc_7 lh_40">
+     <span class="fc_0 ml_15" id="tabletitle"><img src="images/li_03.png">
+
+      <span ng-bind="commongradedata[gri.index].gradeName"></span>&nbsp;
+      <span ng-bind="commongradedata[gri.index].exams[exi.index].examName"></span>&nbsp;
+      考生考场分配及排位</span> 
+
+     
+
+     <!--  标题头 -->
+   <!-- -->   <a class="fr mr_15 ml_10 hand ps_r opt" setcolumns><img  width="25" src="images/lie.png"> <span class="fc_0">定义列</span></a>
+
+     <a class="fr mr_15 hand ml_10 opt" bsprintwin="2"><img width="25" src="images/print.png">  <span class="fc_0">打印</span></a>
+     <!-- <a class="fr mr_15 hand ml_10 opt" export><img  width="25" src="images/xls.png"> <span class="fc_0">复制表格</span></a> -->
+     <a id="zclipcon" bindzclip class="fr mr_15 hand ml_10 opt"><img  width="25" src="images/xls.png"> <span class="fc_0">复制表格</span></a>
+          
+ <!--   -->  <label class="checkbox-inline fr mr_15 ml_10 opt" setfind>
+    <img  width="25" src="images/find.png">
+   <span class="fc_0">筛选</span> 
+      </label>
+
+
+       <div class="sfind dpn" stopp>
+
+
+
+        <div class="form-group has-info has-feedback" ng-if="value.find==1&&value.selected==1" ng-repeat="(key, value) in cols"> 
+          <input type="text" class="form-control input-xs" placeholder="{{value.name}}" ng-model='value.findtext'> 
+      </div>
+        <a class="shide2 hand" sfindsearch>筛选</a> <a class="shide hand" setfind>收起</a>
+    </div> 
+
+    <div class="stitle dpn" stopp>
+        <label class="slabel" ng-repeat="value in cols" >
+            <input type="checkbox" class="colored-blue" ng-checked="value.selected==1" titleunselected/> {{value.name}}
+        </label> 
+        <a class="shide2 hand" titleselall>全选</a> <a class="shide2 hand ml_15" titleunselall>反选</a> <a class="shide hand" setcolumns>收起</a>
+    </div> 
+ 
+    </div>
+    
+    <div class="bcon">
+
+<div>
+    <table class="tabletem table table-hover table-striped table-bordered table-condensed dpn" data-height="500">
+   <thead class="bordered-blueberry">
+    <tr>
+
+ <th data-field="{{value.field}}" data-halign="center" data-align="center" ng-if="value.selected==1" data-sortable="true" ng-repeat="(key, value) in cols" dat='aar' ng-bind="value.name"></th>
+ </tr>
+    </thead>
+
+    </table> 
+</div> 
+ 
+ 
+<div id="printtable">
+ 
+</div>
+
+
+<!--  <div class="h_80"></div> -->
+         <div class="myfix">
+         <hr>
+              <a class="savebtn bgc_blue mr_15 fl" href="#/teach/exam_process">返回考试流程图</a>
+            <a  class="savebtn bgc_6 fl" savesetstu>保 存</a>
+            <span class="ml_15" ng-if="maindata.length>0">共有<span ng-bind='maindata.length'></span>考生 <span ng-if="roomtotalcount()>0">,<span  ng-bind='roomtotalcount()'></span>考场</span> </span>
+      </div>
+         
+    </div>
+    
+  </div> 
+  <!-- 主列表2 -->
+
+ 
+  </div>

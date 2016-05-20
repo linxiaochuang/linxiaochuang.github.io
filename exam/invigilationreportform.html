@@ -1,0 +1,286 @@
+<div ng-controller="invigilationreportform_ctrl as demo" class="bgc_4 mycss">     
+     <div class="h_20"></div>
+     <div class="form_one bgc_f lh_50">
+               <span class="ml_15">年级：</span>
+        <div class="btn-group w_100 h_30 ys b_1">
+                 <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                   <span class="jccode" val="{{selectedGrade.gradeCode}}" ng-bind="selectedGrade.gradeName"></span>
+                   &nbsp;
+                   <i class="caret"></i>
+                 </button>
+                 <ul class="dropdown-menu max_300" role="menu">
+                   <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" selectinvigilationtaskgrade>
+                        <a val="{{value.gradeCode}}" >{{value.gradeName}}</a>
+                   </li>  
+                 </ul>
+        </div> 
+        <span class="ml_15">考试：</span>
+        <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedexam.examCode}}" ng-bind="selectedexam.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList" selectinvigilationtaskexam>
+                          <a val="{{value.examId}}" >{{value.examName}}</a>
+                        </li>
+                      </ul>
+         </div>  
+         <span class="ml_15">&nbsp;</span>         
+         <span class="ml_15">报表类型：</span>
+        <div idv="typeCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedreporttype.typeCode}}" ng-bind="selectedreporttype.typeName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.typeCode}}" ng-repeat="(key, value) in reportTypeList" selectinvigilationreporttype>
+                          <a val="{{value.typeCode}}" >{{value.typeName}}</a>
+                        </li>
+                      </ul>
+         </div>
+         <span class="ml_15">&nbsp;</span>
+         <span id="subjectlabel" class="ml_15">科目：</span>
+         <div id="subject" class="btn-group w_100 h_30 ys b_1">                     
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedcourse.courseId}}" ng-bind="selectedcourse.courseName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.courseId}}" ng-repeat="(key, value) in courseList" selectinvigilationreportcourse>
+                          <a val="{{value.courseId}}" >{{value.courseName}}</a>
+                        </li>
+                      </ul>
+         </div>
+         
+    </div> 
+    <div class="h_20"></div>
+    <div class="h_5"></div>
+  <div class="row">
+  <div >
+  <div>
+    <div class="bgc_9 lh_40">
+           <img src="./images/li_04.png">
+           <span class="fc_0 ml_15" ng-bind="maindata.name"></span>
+           <a class="fr mr_15 hand ml_10 opt"  printconfiginvigireportform><img width="25" src="./images/print.png">  <span class="fc_0">打印</span></a>           
+           <a id="zclipcon" class="fr mr_15 hand ml_10 opt"    copyinvigireport><img  width="25" src="./images/xls.png"> <span class="fc_0">复制表格</span></a>
+    </div>    
+    <!--监考签到报表开始  -->
+    <div  id="printtable1" class="printnodeext dpn mg_auto" >    
+    <div style=" width:100%;text-align: center;margin-top:30px; "> 
+						<p style="font-size: 18px;font-weight: bold;">{{maindata.name}}<span ng-if="selectedcourse.courseId !=''" >-</span><span ng-if="selectedcourse.courseId !=''" ng-bind="selectedcourse.courseName"/></p> 
+	</div>
+      <table class="table table-bordered">
+      <tbody>
+           <tr class="fw_b bgc_4">
+                <th height="40">考场</th>
+                <th>地点</th>
+                <th>监考教师</th>
+                <th width="150">签名</th>
+                <th>试卷回收</th>
+                <th>缺考人数</th>
+                <th>备注</th>
+             </tr>
+             <tr ng-repeat="(key,value) in maindata.lstInvigilationSign">
+             <td height="35"><span ng-bind="{{key+1}}"/></td>
+             <td><span ng-bind="value.examRoomAddr"/></td>
+             <td><span ng-bind="value.teacherName"/></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             </tr>            
+          </tbody>
+        </table>          
+    </div>    
+    
+    <!--监考签到报表结束  -->
+    <!--监考任务安排统计表开始  -->
+    <div  id="printtable2" class="printnodeext dpn mg_auto" >
+    <div style=" width:100%;text-align: center;margin-top:30px; "> 
+						<p style="font-size: 18px;font-weight: bold;">{{maindata.name}}</p> 
+	</div>
+     <table align="center" >
+     <tr>
+	     <td width="500"  valign="top">
+	     	<table class="table table-bordered"> 
+			      <tbody>
+				      <tr class="fw_b bgc_4">
+				            <td height="35"  width="50">序号</td>
+				            <td width="100">姓名</td>
+				            <td width="100">监考次数</td>
+				            <td width="100">巡考次数</td>
+				            <td width="100">总巡考次数</td>
+				            <td width="90">安排次数</td> 
+							<td width="50">总时长</td> 
+							<td width="50">均时长</td> 
+				        </tr>
+		
+				        <tr ng-repeat="(key, value) in maindata.lstArrangeStatOne">
+				          <td height="35" ><span ng-bind="key+1"/></td>
+				          <td  ng-bind="value.teacherName"></td>
+				          <td ><span ng-if="value.invigiSectionCount!=0"  ng-bind="value.invigiSectionCount"/></td>
+				          <td ><span ng-if="value.patrolSectionCount!=0"  ng-bind="value.patrolSectionCount"/></td>
+				          <td ><span ng-if="value.masterPatrolSectionCount!=0"  ng-bind="value.masterPatrolSectionCount"/></td>
+				          <td><span ng-if="value.arrangeTime!=0"  ng-bind="value.arrangeTime"/></td>
+				          <td  ng-bind="value.timeSpan|number : 2"></td>
+				          <td  ng-bind="value.avgTime|number : 2"></td>				          
+				        </tr>		        
+		      	</tbody>
+		    </table>
+	     </td>
+	     <td width="500"  valign="top">
+	     	<table class="table table-bordered"> 
+		     <tbody>
+		           <tr class="fw_b bgc_4">
+			            <td height="35"  width="50">序号</td>
+			            <td width="100">姓名</td>
+			            <td width="100">监考次数</td>
+			            <td width="100">巡考次数</td>
+			            <td width="100">总巡考次数</td>
+			            <td width="90">安排次数</td> 
+						<td width="50">总时长</td> 
+						<td width="50">均时长</td> 
+			        </tr>	
+			        <tr ng-repeat="(key, value) in maindata.lstArrangeStatTwo">
+				          <td height="35" ng-bind="value.index"></td>
+				          <td  ng-bind="value.teacherName"></td>
+				          <td ><span ng-if="value.invigiSectionCount!=0"  ng-bind="value.invigiSectionCount"/></td>
+				          <td ><span ng-if="value.patrolSectionCount!=0"  ng-bind="value.patrolSectionCount"/></td>
+				          <td ><span ng-if="value.masterPatrolSectionCount!=0"  ng-bind="value.masterPatrolSectionCount"/></td>
+				          <td><span ng-if="value.arrangeTime!=0"  ng-bind="value.arrangeTime"/></td>
+				          <td  ng-bind="value.timeSpan|number : 2"></td>
+					      <td  ng-bind="value.avgTime|number : 2"></td>				          
+			        </tr>
+			      </tbody>
+			    </table>
+	     </td>     
+     </tr>     
+		
+	</table>	
+	</div>    
+	   
+    <!--监考任务安排统计表结束  -->
+    <!--考务签到表开始  -->
+    <div  id="printtable3" class="printnodeext dpn mg_auto" >   
+    <div style=" width:100%;text-align: center;margin-top:30px; "> 
+						<p style="font-size: 18px;font-weight: bold;">{{maindata.name}}</p> 
+	</div>
+     <table align="center">
+     <tr>
+			<td width="500"  valign="top">
+			<table class="table table-bordered"> 
+			      <tbody>
+				      <tr class="fw_b bgc_4">
+				            <td height="40"  width="50">序号</td>
+				            <td width="100">姓名</td>
+				            <td width="100">签名</td>
+				            <td width="100">手机</td>
+				        </tr>
+		
+				        <tr ng-repeat="(key, value) in maindata.lstExamMeetingSignOne">
+				          <td height="35" ng-bind="key+1"></td>
+				          <td  ng-bind="value.teacherName"></td>
+				          <td></td>
+				          <td  ng-bind="value.teacherPhone"></td>         
+				        </tr>		        
+		      	</tbody>
+		    </table></td>
+			<td width="500"  valign="top">
+			<table class="table table-bordered"> 
+		      <tbody>
+		            <tr class="fw_b bgc_4">
+				            <td height="40"  width="50">序号</td>
+				            <td width="100">姓名</td>
+				            <td width="100">签名</td>
+				            <td width="100">手机</td>
+				        </tr>
+		
+				        <tr ng-repeat="(key, value) in maindata.lstExamMeetingSignTwo">
+				          <td height="35" ng-bind="value.index"></td>
+				          <td  ng-bind="value.teacherName"></td>
+				          <td></td>
+				          <td  ng-bind="value.teacherPhone"></td>         
+				        </tr>		        
+			      </tbody>
+			    </table></td>
+			</tr>		
+	</table>	
+	</div>    
+	
+    <!--考务签到表结束  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  </div>
+  </div>
+  </div>
+  <!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfiginvigireportform>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+	</div>
+<!-- 弹出窗口 -->
+  
+</div>
+
+ 

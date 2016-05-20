@@ -1,0 +1,95 @@
+<div ng-controller="modifyexamdate_ctrl" class="bgc_4 mycss">     
+     <!-- <div class="h_20"></div> -->
+     <div class="form_one bgc_f lh_50">
+        <span class="ml_15">年级：</span>
+        <div class="btn-group w_100 h_30 ys b_1">
+                 <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                   <span class="jccode" val="{{selectedGrade.gradeCode}}" ng-bind="selectedGrade.gradeName"></span>
+                   &nbsp;
+                   <i class="caret"></i>
+                 </button>
+                 <ul class="dropdown-menu max_300" role="menu">
+                   <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" selectinvigilationtaskgrade>
+                        <a val="{{value.gradeCode}}" >{{value.gradeName}}</a>
+                   </li>  
+                 </ul>
+        </div> 
+        <span class="ml_15">考试：</span>
+        <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedexam.examCode}}" ng-bind="selectedexam.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList" selectinvigilationtaskexam>
+                          <a val="{{value.examId}}" >{{value.examName}}</a>
+                        </li>
+                      </ul>
+         </div>          
+    </div> 
+    <div class="h_20"></div>
+  <div class="row">
+
+  <div >
+  <div>
+    <div class="bgc_9 lh_40">
+     <span class="fc_0 ml_15"><img src="./images/li_04.png">监考安排</span>                      
+    </div>
+    <div  id="printtable" class="b_2 pd_15  bgc_f">
+    <div>     
+   </div>
+      <table class="table table-bordered nobottom normaltable">
+        <tbody>
+          <tr class="fw_b bgc_4">
+            <th height="40" width="100">科类</th>
+            <td>
+              <table class="table table-bordered">
+                <tr class="fw_b bgc_4">
+                  <th height="40" width="20%">科目</th>
+                  <th width="20%">开考日期</th>
+                  <th width="20%">开考时间</th>
+                  <th width="20%">结束时间</th>
+                  <th width="20%">考试时长(分钟)</th>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr ng-repeat="(key, value) in examtimeinfo">
+            <td ng-bind="value.courseType"></td>
+            <td>
+              <table class="table table-bordered">
+                <tr ng-repeat="(key, value) in value.examCourses">
+                  <td width="20%" height="30" ng-bind="value.courseName"></td>
+                  <td width="20%">
+                    <input type="text"
+                  ng-model="value.examDate" datefive="examDate"
+                  class="ipone_c"></td>
+                  <td width="20%">
+                    <input type="text"
+                  getjqdateone="startTime" class="ipone_c datetimepicker"
+                  date-format="hh:ii" ng-model="value.startTime"  ></td>
+                  <td width="20%">
+                    <input type="text"
+                  getjqdateone="finishTime"
+                  class="ipone_c datetimepicker" date-format="hh:ii" ng-model="value.finishTime" ></td>
+                  <td width="20%">
+                    <span ng-bind="value.long"></span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+       <div style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; MARGIN-TOP:10px; ">
+            <a href="#/teach/exam_process" class="savebtnext bgc_blue ">返回考试流程图</a>
+			<a class="savebtnext bgc_blue" savemodifyexamdate>保存</a>
+      </div>
+    </div>    
+  </div>
+  </div>
+  </div>
+ 
+</div>
+ 

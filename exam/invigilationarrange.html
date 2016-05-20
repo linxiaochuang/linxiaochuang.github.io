@@ -1,0 +1,128 @@
+<div ng-controller="invigilationarrange_ctrl as demo" class="bgc_4 mycss">     
+     <div class="form_one bgc_f lh_50">
+               <span class="ml_15">年级：</span>
+        <div class="btn-group w_100 h_30 ys b_1">
+                 <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                   <span class="jccode" val="{{selectedGrade.gradeCode}}" ng-bind="selectedGrade.gradeName"></span>
+                   &nbsp;
+                   <i class="caret"></i>
+                 </button>
+                 <ul class="dropdown-menu max_300" role="menu">
+                   <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" selectinvigilationtaskgrade>
+                        <a val="{{value.gradeCode}}" >{{value.gradeName}}</a>
+                   </li>  
+                 </ul>
+        </div> 
+        <span class="ml_15">考试：</span>
+        <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedexam.examCode}}" ng-bind="selectedexam.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList" selectinvigilationtaskexam>
+                          <a val="{{value.examId}}" >{{value.examName}}</a>
+                        </li>
+                      </ul>
+         </div>  
+         <span class="ml_15">&nbsp;</span>
+         <span class="ml_15">总考场数：{{maindata.arrangeList.iTotalExamRoom}}</span>
+         <span class="ml_15">监考安排规则：</span>
+        <div idv="examCode" class="btn-group w_200 h_30 ys b_1">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedarrangerules.ruleCode}}" ng-bind="selectedarrangerules.ruleName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.ruleCode}}" ng-repeat="(key, value) in ruleList" selectinvigilationarrangerule>
+                          <a val="{{value.ruleCode}}" >{{value.ruleName}}</a>
+                        </li>
+                      </ul>
+         </div>  
+        <span class="ml_15">&nbsp;</span>
+        <div class="btn-group w_150">
+            <span class="ivbtn hand bgc_blue fc_0" generateinvigilationarrange>生成</span>
+        </div>
+    </div> 
+    <div class="h_20"></div>
+  <div class="row">
+
+  <div >
+  <div>
+    <div class="bgc_9 lh_40">
+     <span class="fc_0 ml_15"><img src="./images/li_04.png"> 
+     <span ng-bind="printdata.title"></span></span>          
+            <a class="fr mr_15 hand ml_10 opt" print><img width="25" src="./images/print.png">  <span class="fc_0">打印</span></a>
+            <a class="fr mr_15 hand ml_10 opt" export><img  width="25" src="./images/xls.png"> <span class="fc_0">导出excel</span></a>            
+    </div>
+    <div  id="printtable" class="b_2 pd_15  bgc_f">
+    <div>     
+   </div>
+      <table class="table table-bordered">
+      <tbody>
+           <tr class="fw_b bgc_4">
+                <th height="45"  rowspan="3">考场序号</th>
+                <th>考场</th>
+                <th  ng-repeat="(key,value) in maindata.arrangeList.lstTitleFirst"  colspan="{{value.iColspan}}"><span ng-bind="value.strText"/></th>
+             </tr>
+             <tr class="fw_b bgc_4">
+             	<th ng-repeat="value in maindata.arrangeList.lstTitleSecond"><span ng-bind="value.strText"/></th>
+             </tr>
+             <tr class="fw_b bgc_4">
+             	<th ng-repeat="value in maindata.arrangeList.lstTitleThird"><span ng-bind="value.strText"/></th>
+             </tr>
+             <tr ng-repeat="(key,value) in maindata.arrangeList.lstView">
+                 <td height="32" ><span ng-bind="key+1"/></td>
+                 <td invigilationexch id="{{key}}-{{subkey}}" val="{{key}}"  subval="{{subkey}}"  ng-repeat="(subkey,subvalue) in value" class="{{subvalue.class}}"  guiyi="{{subvalue.class}}"  teacherId="{{subvalue.teacherId}}" teacherName="{{subvalue.teacherName}}"  courseId="{{subvalue.courseId}}" courseName="{{subvalue.courseName}}"  examRoomAddr="{{subvalue.examRoomAddr}}"  neednotfill="{{subvalue.needNotFill}}" coursetype="{{subvalue.courseType}}" title="{{subvalue.strTitle}}"><span  ng-bind="subvalue.teacherName"/></td>
+             </tr>            
+          </tbody>
+        </table>
+        <div style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; MARGIN-TOP:10px; ">
+            <a href="#/teach/exam_process" class="savebtnext bgc_blue ">返回考试流程图</a>
+			<a href="" class="savebtnext bgc_blue" invigilationarrangesave>保存</a>
+			<span style="background:#005be3;margin-left:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:10px">选中</span>
+			<span style="background:#b0dfe5;margin-left:15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:10px">调换</span>
+			<span style="background:#F7F7B7;margin-left:15px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:10px">冲突</span>
+      </div>
+    </div>    
+  </div>
+  </div>
+  </div>
+  <!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfig>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+	</div>
+<!-- 弹出窗口 -->  
+</div>
+ 

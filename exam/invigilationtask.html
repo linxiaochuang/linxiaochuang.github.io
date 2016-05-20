@@ -1,0 +1,190 @@
+<div ng-controller="invigilationtask_ctrl as demo" class="bgc_4 mycss">     
+<!--      <div class="h_20"></div> -->
+     <div class="form_one bgc_f lh_50">
+               <span class="ml_15">年级：</span>
+        <div class="btn-group w_100 h_30 ys b_1" style="z-index:2017;">
+                 <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                   <span class="jccode" val="{{selectedGrade.gradeCode}}" ng-bind="selectedGrade.gradeName"></span>
+                   &nbsp;
+                   <i class="caret"></i>
+                 </button>
+                 <ul class="dropdown-menu max_300" role="menu">
+                   <li  val="{{value.gradeCode}}" ng-repeat="(key, value) in gradedata" selectinvigilationtaskgrade>
+                        <a val="{{value.gradeCode}}" >{{value.gradeName}}</a>
+                   </li>  
+                 </ul>
+        </div> 
+        <span class="ml_15">考试：</span>
+        <div idv="examCode" class="btn-group w_200 h_30 ys b_1"  style="z-index:2017;">
+                      <button  type="button" class="t_c btn btn-default  dropdown-toggle w_p100 h_p100 b_0 br_0" data-toggle="dropdown" aria-expanded="false">
+                        <span class="jccode" val="{{selectedexam.examCode}}" ng-bind="selectedexam.examName"></span>
+                        &nbsp;
+                        <i class="caret"></i>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li  val="{{value.examId}}" ng-repeat="(key, value) in examList" selectinvigilationtaskexam>
+                          <a val="{{value.examId}}" >{{value.examName}}</a>
+                        </li>
+                      </ul>
+         </div>  
+    </div> 
+    <div class="h_20"></div>
+  <div class="row invigi">
+
+  <div class="col-xs-9" style="padding-right: 15px;">
+  <div>
+    <div class="bgc_9 lh_40">
+     <span class="fc_0 ml_15"><img src="./images/li_04.png">监考任务</span>
+            <a class="fr mr_15 hand ml_10 opt" print><img width="25" src="./images/print.png">  <span class="fc_0">打印</span></a>
+            <a class="fr mr_15 hand ml_10 opt" export><img  width="25" src="./images/xls.png"> <span class="fc_0">导出excel</span></a>            
+    </div>
+    <div  id="printtable" class="b_3 pd_15  bgc_f of_a h_630 w_p100">
+    <div style="position:absolute;z-index:2016;background:#ffffff">
+     <span class="fc_4">
+         <span style="padding-left:15px">应排总监考次数：</span>{{examCount}}<span style="padding-left:15px">已排总监考次数：</span>{{maindata.totalInvigilationTimes}}<span style="padding-left:15px" >巡考次数：</span>{{maindata.totalPatrolTimes}}<span style="padding-left:15px">总巡考次数：</span>{{maindata.totalMasterPatrolTimes}}<span style="padding-left:15px">总安排次数：</span>{{maindata.totalArrangeTimes}}<span style="padding-left:15px">总人均次数:</span>{{maindata.totalAvgTimes|number : 2}}        
+     </span>
+   </div>
+   <div>
+     <span class="fc_4">
+         <span style="padding-left:0px">&nbsp;</span>   
+     </span>
+   </div>
+   
+        <table class="table table-bordered setteacher">
+       <!-- <table ng-table="demo.tableParamsLeft" class="table table-hover table-condensed table-bordered table-striped"  disable-filter="!demo.isFiltersEnabled" show-filter="demo.isFiltersVisible"> -->
+      <tbody>
+          
+          <tr class="fw_b bgc_4">
+                        <td height="40" >序号</td>
+                        <td >姓名<div contenteditable="true" id="exceledit" style="width: 1px;height: 1px;overflow: hidden; float: left"> </div></td> 
+                        <td>任教科类</td>
+                        <td>任教学科</td>
+                        <td>监考次数</td>
+                        <td>巡考次数</td>
+                        <td>总巡考次数</td>
+                        <td>安排次数</td>
+                        <!-- <td>总时长</td> -->
+                        <td>班主任</td>
+                        <td>工作人员</td>
+                        <td>操作</td>
+                  </tr>
+                  
+                  <tr ng-repeat="(key,value) in maindata.invigilationtasklist">
+                        <td height="40" ><span ng-bind="key+1" nowrap></span></td>                
+                        <!-- <td class="ps_r {{value.myclass}}">
+                              <div class="floattip">{{value.mytiptext}}</div>
+                                    <input val="{{value.teacherId}}" class="ipone_d" ng-class="{true: 'active', false: ''}[value.selected ==1]" name="teacherName" ng-model="value.teacherName" dviserselected value="{{value.teacherName}}">
+                        </td> -->
+                        <td ng-bind="value.teacherName"  nowrap></td>
+                        <td nowrap>{{value.courseType}}</td>
+                        <td nowrap>{{value.courseName}}</td>
+                        <td><input val="{{key}}" type="number" class="ipone_c" name="invigiSectionCount" ng-model="value.invigiSectionCount"  value="{{value.invigiSectionCount}}" countarrangetimes></td>
+                        <td><input  val="{{key}}"  type="number" class="ipone_c" name="patrolSectionCount" ng-model="value.patrolSectionCount" value="{{value.patrolSectionCount}}"  countarrangetimes></td>
+                        <td><input  val="{{key}}"  type="number" class="ipone_c" name="masterPatrolSectionCount" ng-model="value.masterPatrolSectionCount"  value="{{value.masterPatrolSectionCount}}" countarrangetimes></td>
+                        <td>{{value.arrangeTimes}}</td>
+                       <!--  <td>{{value.duration}}</td>            -->   
+                        <td>
+                             {{value.headmaster}}
+                        </td>
+                        <td>
+                        <div class="chkbox t_l pd_10" id="isstaff">
+                              <a ng-model="value.isstaff"  class="h_30 lh_26 m_5" ng-class="{true: 'chkactive', false: 'chk'}[value.isstaff==1]"  isstaffselect tip="1">
+                              <span ng-if="value.isstaff==1">是</span><span ng-if="value.isstaff==0">否</span>&nbsp;<img class="one" src="./images/v1.png"><img class="two" src="./images/v2.png">
+                              </a>                        
+                          </div>         
+                        </td>
+                        <td><a val="{{key}}"  class="hand" removeinvilationtask>移除</a></td>
+                  </tr>
+            
+          </tbody>
+        </table>
+        <div>
+                 <span class="fc_4">
+                             操作提示：1、快速设置可一次性增加本年级的所有教师。<br/>
+                             <span style="display:block;text-indent:5em;">
+                             2、鼠标单击教师名单可增加到监考任务列表。
+                             </span>
+                 </span>
+       </div>
+
+  
+   </div>
+  </div>
+  </div>
+  <div class="col-xs-3" >
+  <div>
+    <div class="bgc_7 lh_40">
+     <span class="fc_0 ml_15"><img src="./images/li_03.png"> 教师名单</span>
+      
+    <a title="导入本年级所有的教师" class="fr mr_15 hand ml_10 opt" invigionekeyset><img width="25" src="./images/quickset.png">  <span class="fc_0">快速设置</span></a>
+    <label class="checkbox-inline fr mr_15 hand">
+     <input type="checkbox" class="dpn" ng-model="demo.isFiltersVisible" />
+     
+     <img  width="25" src="./images/find.png">
+    <span class="fc_0 ml_5">查找</span>
+        </label>
+    </div>
+    <div class="b_2 pd_15  bgc_f of_a h_630 w_p100">
+           <font color="red">请用鼠标单击选择教师</font>
+     <div >
+   <table ng-table="demo.tableParams" class="table table-hover table-condensed table-bordered table-striped"  disable-filter="!demo.isFiltersEnabled" show-filter="demo.isFiltersVisible">
+     
+      <tr ng-repeat="(key, value) in $data"  invigilationtaskclickteacher class="def">
+           <td data-title="'姓名'" filter="{teacherName: 'text'}"><div class="editdiv" ><span ng-bind="value.teacherName"></span></div></td>
+           <td data-title="'年级'" filter="{gradeName: 'text'}"><div class="editdiv" ><span ng-bind="value.gradeName"></span></div></td>
+           <td data-title="'科类'" filter="{courseType: 'text'}"><div class="editdiv"  ><span ng-bind="value.courseType"></span></div></td>       
+           <td data-title="'科目'" filter="{courseName: 'text'}"><div class="editdiv" ><span ng-bind="value.courseName"></span></div></td>        
+      </tr>
+    </table>
+  </div> 
+    </div>
+    
+  </div>
+  </div>
+      
+  </div>
+  <div class="row">
+   <div style="margin-top:10px; ">
+            <a href="#/teach/exam_process" class="savebtnext bgc_blue ">返回考试流程图</a>
+      <a href="" class="savebtnext bgc_blue" invigilationtasksave>保存</a>
+      </div> 
+  </div>
+  <!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfig>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+	</div>
+<!-- 弹出窗口 -->
+  
+</div>
+
+ 

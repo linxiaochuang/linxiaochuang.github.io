@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html  >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>英泰教育</title>
+<script src="../js/require.js" data-main="../js/main" type="text/javascript" ></script>  
+<link rel="stylesheet" href="../bootsrap3/css/bootstrap.css">
+<link rel="stylesheet" href="../css/css.css">
+
+
+</head>
+<body ng-controller="stuinfo_ctrl" class="bgc_4 mycss">
+	 <div class="h_20"></div>
+	 
+
+
+<!-- 第一个tab -->
+	 <div class="tab_1">
+	<div class="bgc_f lh_50">
+<span class="ml_15">年级：</span> 
+		<div class="btn-group w_100">
+			<span>初一</span>
+                    </div>
+
+  <span class="ml_15">考试：</span> 
+		<div class="btn-group w_150">
+			<span>上学期期中考试</span>
+                    </div>
+
+ <span class="ml_15">科目：</span> 
+		<div class="btn-group w_100">
+			<span>语文</span>
+                    </div> 
+ 
+
+		 <span class="ml_15">文件路径：</span> 
+		<div class="btn-group w_308">
+                      <input type="text" id="picture_show" class="form-control"> 
+                    </div>
+
+        <div class="btn-group w_150 ml_15">
+                       <span class="ivbtn hand bgc_5 fc_0">选择文件</span>
+                       <span class="mycss">
+                       <form id='picture_form' style='display: inline-block;position: absolute;' action="../showPutFile" method='post' enctype='multipart/form-data'><input name="file" url="../showPutFile" id="picture_upload" style="-moz-opacity:0;filter:alpha(opacity=0);opacity:0;margin-left: -150px;height: 30px;position: absolute;margin-top: 10px;" type="file"></form>
+                       
+
+                       </span>
+                    </div> 
+		 
+ 
+	</div> 
+
+	 
+ 
+
+	<div class="h_20"></div>
+
+	<div>
+		<div class="bgc_7 lh_40">
+		 <span class="fc_0 ml_15"><img src="../images/li_03.png"> 学生考号及考试排位设置</span>
+
+     
+		 <a class="fr mr_15"><img width="25" src="../images/print.png"></a>
+		 <a class="fr mr_15"><img  width="25" src="../images/xls.png"></a>
+     
+
+     <div class="fr btn-group w_250 h_30 ys mr_40">
+         <input class="inputv" type="text" placeholder="请输入姓名">
+         </div>
+		</div>
+		<div class="b_2 pd_15  bgc_f">
+		 	<table class="table table-bordered">
+      
+		      <tbody>
+		      <tr class="fw_b bgc_4">
+		          <td height="40" ><input type="checkbox"></td>
+		          <td  >序号</td>
+		          <td >考号</td>
+		           <td >年级</td>
+		           <td >班级</td>
+		           <td >考场</td>
+		           <td >座位号</td>
+		           <td >姓名</td> 
+		           <td >全卷/总分</td>  
+		        </tr>
+		        <!--  ng-repeat="(key, value) in maindata" --><tr>
+		         <td height="30" ><input type="checkbox"></td>
+		         <td  >序号</td>
+		          <td >考号</td>
+		           <td >年级</td>
+		           <td >班级</td>
+		           <td >考场</td>
+		           <td >座位号</td>
+		           <td >姓名</td> 
+		           <td >全卷/总分</td>  
+		            
+		            </tr>
+
+		           
+		        
+		      </tbody>
+		    </table>
+
+		     <div>
+			      <span class="ivbtn hand fc_0 bgc_6">保存</span>   <span class="itbtn hand fc_0 bgc_6 ml_15">清空全部成绩</span>
+		  </div>
+		</div>
+		
+	</div>
+</div>
+<!-- 第一个tab -->
+<!-- 弹出窗口 -->
+	<div id="printWin" class="w_450 dpn mg_auto mycss">
+		
+	
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">表格标题：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.title" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r"><span class="fc_1">起始页码：</span></div>
+			<div class="col-xs-7">
+				 <div class="btn-group w_308">
+             <input type="text"  placeholder="" ng-model="printdata.pageNum" class="form-control"> 
+        </div>
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+		<div class="row lh_50">
+			<div class="col-xs-3 t_r">&nbsp;</div>
+			<div class="col-xs-7 t_c">
+				<div class="t_c">
+	 <a class="savebtn bgc_6" printconfig>确定</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="savebtn bgc_1" closewin>取消</a>
+			      </div>
+		  
+			</div>
+			<div class="col-xs-2">&nbsp;</div> 
+		</div>
+
+
+	</div>
+<!-- 弹出窗口 -->
+ 
+</body>
+</html>
+ 
